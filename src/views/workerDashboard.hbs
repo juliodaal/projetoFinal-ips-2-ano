@@ -1,0 +1,36 @@
+<section class="container my-5" style="height: fit-content; min-height: 85vh; overflow-y: scroll;">
+    <div class="row container">
+        <h1 class="my-3">Dashboard Worker</h1>
+        <div class="col-12 col-sm-6">
+            <form action="javascript: app.registerBoxEmptied();" method="post" id="worker-dashboard">
+                <div class="form-group">
+                    <label for="id-input">Id Box</label>
+                    <input class="form-control" type="number" name="idBox" id="id-input" placeholder="37">
+                </div>
+                <div class="form-group">
+                    <label for="total-input">Total</label>
+                    <input class="form-control" type="number" name="total" id="total-input" placeholder="400">
+                </div>
+                <div class="form-group">
+                    <label for="peso-input">Peso (Kg)</label>
+                    <input class="form-control" type="number" name="peso" id="peso-input" placeholder="40">
+                </div>
+                <div class="form-group">
+                    <label for="date-input">Data e horas</label>
+                    <input class="form-control" type="date" name="date" id="date-input">
+                </div>
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="my-5 col-12 col-sm-6 d-flex justify-content-center align-content-center flex-column">
+            <h4>Id Box</h4>
+            <p>É o identificador do contentor que esta a registrar</p>
+            <h4>Total</h4>
+            <p>É o total objetos que se incontra no contentor</p>
+            <h4>Peso</h4>
+            <p>É o peso do contentor en Kologramas</p>
+            <h4>Data</h4>
+            <p>É a data e a hora do registro</p>
+        </div>
+    </div>
+</section>

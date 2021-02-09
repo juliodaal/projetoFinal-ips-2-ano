@@ -1,0 +1,79 @@
+
+      {{>modal}}
+      <section class="position-relative bg-success pb-5 pb-md-6 pb-lg-7">
+        <div class="cs-shape cs-shape-bottom cs-shape-curve bg-body">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+            <path fill="currentColor" d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+          </svg>
+        </div>
+        <div class="container pt-4 pt-md-5 pt-lg-0" style="height: 60vh; ">
+          <div class="row d-flex align-items-center justify-content-center" style="height: 100%;">
+            <div class="col-lg-6 text-center text-lg-left">
+              <div class="jumbotron bg-transparent">
+                <h1 class="text-light" style="font-size: 4rem;">Good To Recycle</h1>
+                <p class="pb-3 text-center text-light">Ajuda o teu planeta e quem lá vive.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features section #1-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="row pt-2">
+          <div class="col-sm-4 mb-grid-gutter pb-1">
+            <div class="mx-auto text-center" style="max-width: 278px;"><img class="d-inline-block mb-3" width="56" src="icons/01.svg" alt="Simple"/>
+              <h3 class="h5">Simple</h3>
+              <p class="font-size-sm mb-0">Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-grid-gutter pb-1">
+            <div class="mx-auto text-center" style="max-width: 278px;"><img class="d-inline-block mb-3" width="56" src="icons/02.svg" alt="Fast"/>
+              <h3 class="h5">Fast</h3>
+              <p class="font-size-sm mb-0">Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-grid-gutter pb-1">
+            <div class="mx-auto text-center" style="max-width: 278px;"><img class="d-inline-block mb-3" width="67" src="icons/03.svg" alt="Organized"/>
+              <h3 class="h5">Organized</h3>
+              <p class="font-size-sm mb-0">Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pricing-->
+      <section class="pt-lg-3 mb-5">
+        <div class="container pt-2">
+          <div class="row justify-content-center pt-5">
+            <div class="col-lg-10">
+              <div class="bg-light box-shadow-lg rounded-lg pt-3 px-4">
+                <div class="cs-pricing-wrap pt-3 px-3">
+                  {{#each box}}
+                  <div class="d-md-flex align-items-start border-bottom py-4 py-sm-5 justify-content-between">
+                    <div class="ml-4 ml-sm-0 py-2 w-100" style="max-width: 15rem;">
+                      <h3 class="mb-2">{{tipo}}</h3>
+                      <div class="font-size-xs" style="max-width: 10rem;">Este é o total de {{tipo}} reciclados</div>
+                    </div>
+                    <div class="d-flex w-100 align-items-end py-3 py-sm-2 px-4" style="max-width: 20rem;">
+                      <span class="cs-price display-2 font-weight-normal text-success px-1 mr-2 pricing-plan-value" data-current-price="0" data-new-price="0">{{quantidade}}</span>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA-->
+      <section class="bg-success py-5">
+        <div class="container py-2 py-sm-4">
+          <div class="row align-items-center">
+            <div class="col-xl-12 col-md-7 mb-5 mb-md-0">
+              <h2 class="text-light text-center ">Empower your future. Try Good To Recycle</h2>
+              <p class="text-light mb-grid-gutter text-center ">Everything you need from A to Z</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
