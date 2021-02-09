@@ -1,10 +1,10 @@
 # dependencies
 /node_modules
 /dist
-ss
+##ss
 # pictures
-*.jpg
-*.png 
+# *.jpg
+# *.png 
 
 # environment variables
 .env

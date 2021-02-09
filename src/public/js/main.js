@@ -49,13 +49,13 @@ App.prototype.activateEvents = function() {
     if(myChart != null){
         switch (myChart.dataset.purpose) {
             case "client":
-                getDataChart(renderChart,`http://localhost:8081/statistics/client/${myChart.dataset.id}`, "Numero de Contentores");
+                getDataChart(renderChart,`https://projeto-final-ips-2-ano.herokuapp.com/statistics/client/${myChart.dataset.id}`, "Numero de Contentores");
                 break;
             case "worker":
-                getDataChart(renderChart,`http://localhost:8081/worker/statistics/${myChart.dataset.id}`, "Numero de Contentores Trabalhados");
+                getDataChart(renderChart,`https://projeto-final-ips-2-ano.herokuapp.com/worker/statistics/${myChart.dataset.id}`, "Numero de Contentores Trabalhados");
                 break;
             case "box":
-                getDataChart(renderChartBox,`http://localhost:8081/box/statistics/${myChart.dataset.id}`, "Numero de Elementos");
+                getDataChart(renderChartBox,`https://projeto-final-ips-2-ano.herokuapp.com/box/statistics/${myChart.dataset.id}`, "Numero de Elementos");
                 break;
 
             default:
@@ -73,7 +73,7 @@ App.prototype.registerBoxEmptied = function() {
         peso: form.get("peso"), 
         date: form.get("date")
     };
-    sendHttpRequest('http://localhost:8081/worker/box','POST',showFeedbackWorker,data);
+    sendHttpRequest('https://projeto-final-ips-2-ano.herokuapp.com/worker/box','POST',showFeedbackWorker,data);
 }
 
 let showFeedbackWorker = response => {
@@ -84,7 +84,7 @@ let showFeedbackWorker = response => {
     }
 }
 
-let findTypes = (callback, userId) => sendHttpRequest(`http://localhost:8081/box/select/${userId}`,'GET',callback);
+let findTypes = (callback, userId) => sendHttpRequest(`https://projeto-final-ips-2-ano.herokuapp.com/box/select/${userId}`,'GET',callback);
 
 let getDataChart = (callback,url,lineDescription) => sendHttpRequest(url,'POST',callback,null,lineDescription);
 
