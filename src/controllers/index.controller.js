@@ -3,7 +3,11 @@ const IndexController = {};
 
 IndexController.renderIndex = async (req,res) => {
     let response = await requestHandlers.getTypeBox();
-    res.render("index", { titleDocument: "Landing Page" ,currentUser: req.user, box: response.data});
+    if(response.data.length == 0){ 
+        res.render("index", { titleDocument: "Landing Page" ,currentUser: req.user});
+    } else {
+        res.render("index", { titleDocument: "Landing Page" ,currentUser: req.user, box: response.data});
+    }
 };
 
 IndexController.renderAbout = (req,res) => {
