@@ -92,6 +92,12 @@ dashboardController.renderDaskboardById = async (req,res) => {
     let response = await requestHandlers.getDataDashboardById(req.params.id);
     res.render("dashboard", { titleDocument: "Dashboard" , box: response.data, addBox: true, user: req.params, currentUser: req.user});
 }
+
+dashboardController.renderBoxQrcode = async (req,res) => {
+    let response = await requestHandlers.getBoxQrcode(req.params.id);
+    res.render("dashboardQrCode", { titleDocument: "Dashboard" , box: response.data});
+}
+
 dashboardController.renderBoxStatistics = async (req,res) => {
     res.render("boxStatistics", { titleDocument: "Box Statistics", currentUser: req.user, box: req.params });
 }

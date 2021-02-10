@@ -52,6 +52,19 @@ module.exports.getDataDashboardById = getDataDashboardById;
  * Function that creates a new task
  * @param {*} body 
  * */ 
+let getBoxQrcode = (id) => {
+    let args = [parseInt(id)];
+    let query = "select u.company,b.id,b.quantidade_atual,b.total_reciclado,b.aviso,tb.tipo from utilizador u join tipo_box tb on u.id=tb.id_utilizador_form_utilizador join box b on tb.id=b.tipo_from_tipo_box where b.id = ?;";
+    return packingRequest(args,query,"Box do not exists", "Box found");
+}
+
+module.exports.getBoxQrcode = getBoxQrcode;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
 let createClient = (body) => {
     let {name,lastName,email,password,company} = body;
     let query = "insert into utilizador (nome,apelido,email,pwd,company,tipo_from_tipo_utilizador) values (?,?,?,?,?,1);";
