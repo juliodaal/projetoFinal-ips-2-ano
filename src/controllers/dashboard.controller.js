@@ -95,7 +95,8 @@ dashboardController.renderDaskboardById = async (req,res) => {
 
 dashboardController.renderBoxQrcode = async (req,res) => {
     let response = await requestHandlers.getBoxQrcode(req.params.id);
-    res.render("dashboardQrCode", { titleDocument: "Dashboard" , box: response.data});
+    res.json({response});
+    // res.render("dashboardQrCode", { titleDocument: "Dashboard" , box: response.data});
 }
 
 dashboardController.renderBoxStatistics = async (req,res) => {
