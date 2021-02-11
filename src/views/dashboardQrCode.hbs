@@ -2,52 +2,50 @@
 <section class="container my-5" style="height: fit-content; min-height: 85vh; overflow-y: scroll;">
     <h1 class="my-5 text-center">Dashboard Worker</h1>
     <div class="row my-5 d-flex justify-content-center align-items-center">
-        <div class="col-12 col-sm-6">
-            {{#if box}}
+        {{#if box}}
                 {{#each box}}
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-6 my-2">
-                                <h5 class="card-title">Id Box</h5>
-                                <p class="card-text font-size-sm">{{id}}</p>
-                            </div>
-                            <div class="col-6 my-2">
-                                <h5 class="card-title">Tipo Box</h5>
-                                <p class="card-text font-size-sm">{{tipo}}</p>
-                            </div>
-                            <div class="col-6 my-2">
-                                <h5 class="card-title">Empresa</h5>
-                                <p class="card-text font-size-sm">{{company}}</p>
-                            </div>
-                            
-                            <div class="col-6 my-2">
-                                <h5 class="card-title">Cheio</h5>
-                                <p class="card-text font-size-sm">{{aviso}}</p>
-                            </div>
-                            <div class="col-6 my-2">
-                                <h5 class="card-title">Quantidade Atual</h5>
-                                <p class="card-text font-size-sm">{{quantidade_atual}}</p>
-                            </div>
-                            <div class="col-6 my-2">
-                                <h5 class="card-title">Total Reciclado</h5>
-                                <p class="card-text font-size-sm">{{total_reciclado}}</p>
+                <div class="col-12 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 my-2">
+                                    <h5 class="card-title">Id Box</h5>
+                                    <p class="card-text font-size-sm">{{id}}</p>
+                                </div>
+                                <div class="col-6 my-2">
+                                    <h5 class="card-title">Tipo Box</h5>
+                                    <p class="card-text font-size-sm">{{tipo}}</p>
+                                </div>
+                                <div class="col-6 my-2">
+                                    <h5 class="card-title">Empresa</h5>
+                                    <p class="card-text font-size-sm">{{company}}</p>
+                                </div>
+                                
+                                <div class="col-6 my-2">
+                                    <h5 class="card-title">Cheio</h5>
+                                    <p class="card-text font-size-sm">{{aviso}}</p>
+                                </div>
+                                <div class="col-6 my-2">
+                                    <h5 class="card-title">Quantidade Atual</h5>
+                                    <p class="card-text font-size-sm">{{quantidade_atual}}</p>
+                                </div>
+                                <div class="col-6 my-2">
+                                    <h5 class="card-title">Total Reciclado</h5>
+                                    <p class="card-text font-size-sm">{{total_reciclado}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-sm-6">
+                    <canvas id="myChart" max-width="400" max-height="400" data-purpose="boxQr" data-id="{{id}}"></canvas>
+                </div>
                 {{/each}}
             {{else}}
-                <h1 class="m-5">Erro ao procurar do contentor</h1>
+                <div class="col-12">
+                    <h1 class="m-5">Erro ao procurar do contentor</h1>
+                </div>
             {{/if}}
-        </div>
-        <div class="col-12 col-sm-6">
-            {{#if box}}
-                <canvas id="myChart" max-width="400" max-height="400" data-purpose="boxQr" data-id="{{box.id}}"></canvas>
-            {{else}}
-                <canvas id="myChart" max-width="400" max-height="400" data-purpose="boxQr"></canvas>
-            {{/if}}
-        </div>
     </div>
 </section>   
 
