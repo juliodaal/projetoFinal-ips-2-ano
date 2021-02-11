@@ -57,10 +57,6 @@ App.prototype.activateEvents = function() {
             case "box":
                 getDataChart(renderChartBox,`https://projeto-final-ips-2-ano.herokuapp.com/box/statistics/${myChart.dataset.id}`, "Numero de Elementos");
                 break;
-            case "boxQr":
-                getDataChart(renderChartBox,`https://projeto-final-ips-2-ano.herokuapp.com/box/qr/statistics/${myChart.dataset.id}`, {parameter:"Numero de Elementos", qr:true});
-                break;
-
             default:
                 break;
         }
@@ -168,12 +164,7 @@ let renderChart = (response,lineDescription) => {
 
 let renderChartBox = (response,lineDescription) => {
     if(response.data.length == 0){
-        let chart;
-        if(typeof lineDescription == "string"){
-            chart =  new ChartCanvas(response.data.length + 5,0,5,"myChart",lineDescription);
-        } else {
-            chart =  new ChartCanvas(response.data.length + 5,0,lineDescription.qr,"myChart",lineDescription.parameter);
-        }
+        let chart =  new ChartCanvas(response.data.length + 5,0,5,"myChart",lineDescription);
         chart.renderChartCanvas();
         swal("No data", "You have not data to show!", 'warning');
     } else {

@@ -85,6 +85,4 @@ router.post("/worker/box", isAuthenticated, dashboardController.registerBoxEmpti
 // Box QR Code
 router.get("/box/qrcode/:id", dashboardController.renderBoxQrcode);
 
-router.post("/box/qr/statistics/:id", dashboardController.getBoxStatisticsQr);
-
 module.exports = router;
