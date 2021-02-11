@@ -114,6 +114,11 @@ dashboardController.boxStatistics = async (req,res) => {
     res.json({ response });
 }
 
+dashboardController.getBoxStatisticsQr = async (req,res) => {
+    let response = await requestHandlers.boxStatistics(req.params.id);
+    res.json({ response });
+}
+
 dashboardController.renderClientStatistics = async (req,res) => {
     res.render("clientStatistics", { titleDocument: "Client Statistics", currentUser: req.user, user: req.params});
 }

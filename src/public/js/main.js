@@ -57,6 +57,9 @@ App.prototype.activateEvents = function() {
             case "box":
                 getDataChart(renderChartBox,`https://projeto-final-ips-2-ano.herokuapp.com/box/statistics/${myChart.dataset.id}`, "Numero de Elementos");
                 break;
+            case "boxQr":
+                getDataChart(renderChartBox,`https://projeto-final-ips-2-ano.herokuapp.com/box/qr/statistics/${myChart.dataset.id}`, "Numero de Elementos");
+                break;
 
             default:
                 break;
