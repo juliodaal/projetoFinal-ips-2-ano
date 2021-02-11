@@ -98,6 +98,8 @@ dashboardController.renderBoxQrcode = async (req,res) => {
     if(response.message == "success"){
         if(parseInt(response.data[0].aviso) == 1){
             response.data[0].aviso = "Yes"
+        } else {
+            response.data[0].aviso = "No"
         }
     }
     res.render("dashboardQrCode", { titleDocument: "Box Data" , box: response.data});
