@@ -78,14 +78,6 @@ App.prototype.registerBoxEmptied = function() {
 let showFeedbackWorker = response => {
     if(response.message == "success"){
         swal(`${response.message}`, "Box Updated and Registered", `${response.message}`)
-        .then((value) => {
-            let iForm = document.getElementById("worker-dashboard");
-            let form = new FormData(iForm);
-            form.set("idBox", "");
-            form.set("total", ""); 
-            form.set("peso", ""); 
-            form.set("date", "");
-        });
     } else {
         swal(`${response.message}`, "Error Updating the Box", `${response.message}`)
     }
