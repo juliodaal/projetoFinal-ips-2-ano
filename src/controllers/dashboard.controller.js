@@ -84,7 +84,7 @@ dashboardController.createClient = async (req,res) => {
 }
 
 dashboardController.createWorker = async (req,res) => {
-    let response = await requestHandlers.createWorker(req.body);
+    await requestHandlers.createWorker(req.body);
     res.redirect("/dashboard");
 }
 
@@ -95,8 +95,7 @@ dashboardController.renderDaskboardById = async (req,res) => {
 
 dashboardController.renderBoxQrcode = async (req,res) => {
     let response = await requestHandlers.getBoxQrcode(req.params.id);
-    res.json({response});
-    // res.render("dashboardQrCode", { titleDocument: "Dashboard" , box: response.data});
+    res.render("dashboardQrCode", { titleDocument: "Box Data" , box: response.data});
 }
 
 dashboardController.renderBoxStatistics = async (req,res) => {
