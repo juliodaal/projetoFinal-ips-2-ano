@@ -140,8 +140,8 @@ dashboardController.registerBoxEmptied = async (req,res) => {
 dashboardController.registerBoxApp = async (req,res) => {
     let {id,quantity,weight,date,idUser} = req.params;
     let send = {idBox:id,total:quantity,peso:weight,date};
-    // let response = await requestHandlers.registerBoxEmptied(send, idUser);
-    res.json({send,idUser});
+    let response = await requestHandlers.registerBoxEmptied(send, idUser);
+    res.json({response});
 }
 
 dashboardController.getClientStatistics = async (req,res) => {
