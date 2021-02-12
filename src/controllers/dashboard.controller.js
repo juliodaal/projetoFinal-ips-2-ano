@@ -178,7 +178,7 @@ dashboardController.deleteWorker = async (req,res) => {
 // app
 
 dashboardController.appLogin = async (req,res) => {
-    res.json({body: {email: "email", password: "password"}});
+    res.json({body: req.body});
 }
 
 module.exports = dashboardController;
