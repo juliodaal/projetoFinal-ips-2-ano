@@ -181,12 +181,12 @@ dashboardController.appLogin = async (req,res) => {
     let response = await requestHandlers.appLogin(req.params);
     if(response.message == "success"){
         if(response.data.length == 0){
-            res.json({error: "error"});
+            res.json({msg: "error"});
         } else {
-            res.json({error: "ok"});
+            res.json({msg: "ok"});
         }
     } else {
-        res.json({error: "error"});
+        res.json({msg: "error"});
     }
 }
 
