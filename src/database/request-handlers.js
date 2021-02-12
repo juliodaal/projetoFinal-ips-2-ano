@@ -232,6 +232,8 @@ module.exports.deleteWorker = deleteWorker;
  * */ 
 let registerBoxEmptied = async (body, id) => {
     let { idBox, total, peso, date } = body
+    console.log(body);
+    console.log(id);
     let query = "insert into box_ganhos (id_box,total_esvaziado,peso,data) values (?,?,?,STR_TO_DATE(?,'%Y-%m-%d'));";
     let response = packingRequest([idBox,total,peso,date],query,"Error registering box", "Box resgistered")
     .then(res => {
