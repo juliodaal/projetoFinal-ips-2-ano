@@ -134,7 +134,13 @@ dashboardController.renderWorkerStatistics = async (req,res) => {
 dashboardController.registerBoxEmptied = async (req,res) => {
     let body = await JSON.parse(Object.keys(req.body)[0]);
     let response = await requestHandlers.registerBoxEmptied(body, req.user.id);
-    console.log(response)
+    res.json({response});
+}
+
+dashboardController.registerBoxApp = async (req,res) => {
+    let {id,quantity,weight,date,idUser} = req.params;
+    let send = {idBox:id,total:quantity,peso:weight,date};
+    let response = await requestHandlers.registerBoxEmptied(send, idUser);
     res.json({response});
 }
 

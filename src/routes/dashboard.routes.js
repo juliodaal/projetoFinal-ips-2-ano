@@ -91,4 +91,7 @@ router.get("/box/app/qrcode/:id", dashboardController.getBoxAppQrcode);
 // App Login Worker
 router.post("/app/login/:email/:password", dashboardController.appLogin);
 
+// Register Box App Worker
+router.post("/app/box/register/:id/:quantity/:weight/:date/:idUser", dashboardController.registerBoxApp);
+
 module.exports = router;
