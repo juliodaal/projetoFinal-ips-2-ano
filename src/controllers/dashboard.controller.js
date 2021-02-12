@@ -173,4 +173,12 @@ dashboardController.deleteWorker = async (req,res) => {
     // : res.render("adminDashboard", { titleDocument: "Dashboard", error: true, message:"Erro ao Apagar ao Cliente." })
 }
 
+
+
+// app
+
+dashboardController.appLogin = async (req,res) => {
+    console.log(req.body);
+}
+
 module.exports = dashboardController;
