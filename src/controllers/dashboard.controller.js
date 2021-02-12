@@ -105,6 +105,15 @@ dashboardController.renderBoxQrcode = async (req,res) => {
     res.render("dashboardQrCode", { titleDocument: "Box Data" , box: response.data});
 }
 
+dashboardController.getBoxAppQrcode = async (req,res) => {
+    let response = await requestHandlers.getBoxAppQrcode(req.params.id);
+    if(response.message == "success"){
+        res.json({response});
+    } else {
+        res.json({error: "error"});
+    }
+}
+
 dashboardController.renderBoxStatistics = async (req,res) => {
     res.render("boxStatistics", { titleDocument: "Box Statistics", currentUser: req.user, box: req.params });
 }

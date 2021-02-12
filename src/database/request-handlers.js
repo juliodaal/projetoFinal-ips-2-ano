@@ -65,6 +65,19 @@ module.exports.getBoxQrcode = getBoxQrcode;
  * Function that creates a new task
  * @param {*} body 
  * */ 
+let getBoxAppQrcode = (id) => {
+    let args = [parseInt(id)];
+    let query = "select id,quantidade_atual from box where id = ?;";
+    return packingRequest(args,query,"Box do not exists", "Box found");
+}
+
+module.exports.getBoxAppQrcode = getBoxAppQrcode;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
 let createClient = (body) => {
     let {name,lastName,email,password,company} = body;
     let query = "insert into utilizador (nome,apelido,email,pwd,company,tipo_from_tipo_utilizador) values (?,?,?,?,?,1);";

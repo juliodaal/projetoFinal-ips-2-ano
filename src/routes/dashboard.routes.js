@@ -85,6 +85,9 @@ router.post("/worker/box", isAuthenticated, dashboardController.registerBoxEmpti
 // Box QR Code
 router.get("/box/qrcode/:id", dashboardController.renderBoxQrcode);
 
+// App Box QR Code
+router.get("/box/app/qrcode/:id", dashboardController.getBoxAppQrcode);
+
 // App Login Worker
 router.post("/app/login/:email/:password", dashboardController.appLogin);
 
