@@ -465,6 +465,19 @@ module.exports.getUser = getUser;
  * 
  * Function that creates a new task
  * @param {*} body 
+ * */ 
+let appLogin = (obj) => {
+    let {email, password} = obj;
+    let query = "select id from utilizador where email = ? and pwd = ?;";
+    return packingRequest([email,password],query,"Incorrect Data", "User exists");
+}
+
+module.exports.appLogin = appLogin;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
  * */
 let getUserById = (body) => {
     let args = Object.values(body); // Cambiar la query de abajo
