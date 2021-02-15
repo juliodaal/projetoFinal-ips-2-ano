@@ -483,7 +483,7 @@ module.exports.getUser = getUser;
  * */ 
 let appLogin = (obj) => {
     let {email, password} = obj;
-    let query = "select id from utilizador where email = ? and pwd = ? and tipo_from_tipo_utilizador = 2;";
+    let query = "select id,nome,apelido,email from utilizador where email = ? and pwd = ? and tipo_from_tipo_utilizador = 2;";
     return packingRequest([email,password],query,"Incorrect Data", "User exists");
 }
 
