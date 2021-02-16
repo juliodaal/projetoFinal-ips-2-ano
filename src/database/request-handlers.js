@@ -483,7 +483,7 @@ module.exports.getUser = getUser;
  * */ 
 let appLogin = (obj) => {
     let {email, password} = obj;
-    let query = "select id,nome,apelido,email from utilizador where email = ? and pwd = ? and tipo_from_tipo_utilizador = 2;";
+    let query = "select u.id,u.nome,u.apelido,u.email,count(*) as 'number_recycle' from utilizador u join historico_trabalhador ht on u.id=ht.id_utilizador_from_utilizador where email = ? and pwd = ? and tipo_from_tipo_utilizador = 2;";
     return packingRequest([email,password],query,"Incorrect Data", "User exists");
 }
 
