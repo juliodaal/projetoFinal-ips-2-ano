@@ -1,10 +1,9 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const options = require("./database/options.json").server;
+const options = require("./database/options").parameters.options;
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
-
 // Initialization
 const app = express();
 require("./config/passport");

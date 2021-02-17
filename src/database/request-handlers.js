@@ -1,7 +1,7 @@
 "use strict";
 const mysql = require("mysql");
 // const passport = require("passport");
-const options = require("./options.json").database;
+const options = require("./options").parameters.database;
 const bcrypt = require("bcryptjs");
 
 function Exception(message, type) {
