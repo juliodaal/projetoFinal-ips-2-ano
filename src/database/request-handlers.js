@@ -282,6 +282,18 @@ module.exports.registerBoxEmptied = registerBoxEmptied;
  * Function that creates a new task
  * @param {*} body 
  * */ 
+let getStatusBox = (company) => {
+    let query = "select u.company,b.id,tb.tipo,b.quantidade_atual,b.total_reciclado,b.aviso from utilizador u join tipo_box tb on u.id= tb.id_utilizador_form_utilizador join box b on u.id=b.id_utilizador_form_utilizador and b.tipo_from_tipo_box=tb.id where u.company = ?;";
+    return packingRequest([company],query,"Box not found", "Box found");
+}
+
+module.exports.getStatusBox = getStatusBox;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
 let findTypesBox = (id) => {
     let query = "select tipo from tipo_box where id_utilizador_form_utilizador = ?;";
     return packingRequest([id],query,"Box Type not found", "Box Type found");

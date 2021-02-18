@@ -94,4 +94,7 @@ router.post("/app/login/:email/:password", dashboardController.appLogin);
 // Register Box App Worker
 router.post("/app/box/register/:id/:quantity/:weight/:date/:idUser", dashboardController.registerBoxApp);
 
+// Get Status Box App Worker
+router.post("/app/box/status/:company", dashboardController.getStatusBox);
+
 module.exports = router;

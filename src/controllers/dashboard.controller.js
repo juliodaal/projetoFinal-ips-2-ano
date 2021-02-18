@@ -144,6 +144,12 @@ dashboardController.registerBoxApp = async (req,res) => {
     res.json({response});
 }
 
+dashboardController.getStatusBox = async (req,res) => {
+    let {company} = req.params;
+    let response = await requestHandlers.getStatusBox(company);
+    res.json({response});
+}
+
 dashboardController.getClientStatistics = async (req,res) => {
     let response = await requestHandlers.getClientStatistics(req.params.id);
     res.json({ response });
