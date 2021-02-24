@@ -91,10 +91,11 @@ dashboardController.createWorker = async (req,res) => {
 dashboardController.manageBox = async (req,res) => {
     if(req.params.value == "E"){
         let response = await requestHandlers.manageBox(req.params);
-        res.json({ response });
+        res.json({ response }); 
     } else {
+        // Caixa cheia
         let response = await requestHandlers.manageTimeBox(req.params);
-        res.json({ response });
+        res.json({ response }); 
     }
 }
 

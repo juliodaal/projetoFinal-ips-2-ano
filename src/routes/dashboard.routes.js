@@ -106,6 +106,7 @@ router.post("/support/delete", isAuthenticated, dashboardController.deleteTicket
 
 router.get("/support/get", isAuthenticated, dashboardController.getSupportTickets);
 
-router.get("/box/data/:value/:id", isAuthenticated, dashboardController.manageBox);
+router.get("/box/data/:value/:id/hard", dashboardController.manageBox);
+
 
 module.exports = router;
