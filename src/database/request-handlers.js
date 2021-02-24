@@ -27,9 +27,14 @@ module.exports.getTypeBox = getTypeBox;
  * @param {*} body 
  * */ 
 let manageBox = (req) => {
-    let {value,id} = req
-    let query = "update box set quantidade_atual = ? where id = ?";
-    return packingRequest([value,id],query,"Box do not found", "Box found");
+    let {id} = req
+    let query = "select quantidade_atual from box where id = ?";
+    let response = packingRequest([id],query,"Box do not found", "Box found")
+    .then(res => {
+        let value = res.data[0].quantidade_atual + 1;
+        let query = "update box set quantidade_atual = ? where id = ?";
+        return packingRequest([value,id],query,"Box do not found", "Box found");
+    })
 }
 
 module.exports.manageBox = manageBox;
