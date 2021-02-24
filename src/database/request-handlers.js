@@ -34,7 +34,9 @@ let manageBox = (req) => {
         let value = res.data[0].quantidade_atual + 1;
         let query = "update box set quantidade_atual = ? where id = ?";
         return packingRequest([value,id],query,"Box do not found", "Box found");
-    })
+    });
+    
+    return response;
 }
 
 module.exports.manageBox = manageBox;
