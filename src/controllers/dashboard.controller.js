@@ -88,6 +88,16 @@ dashboardController.createWorker = async (req,res) => {
     res.redirect("/dashboard");
 }
 
+dashboardController.manageBox = async (req,res) => {
+    if(req.params.value == "E"){
+        let response = await requestHandlers.manageBox(req.params);
+        res.json({ response });
+    } else {
+        let response = await requestHandlers.manageTimeBox(req.params);
+        res.json({ response });
+    }
+}
+
 dashboardController.renderDaskboardById = async (req,res) => {
     let response = await requestHandlers.getDataDashboardById(req.params.id);
     res.render("dashboard", { titleDocument: "Dashboard" , box: response.data, addBox: true, user: req.params, currentUser: req.user});
@@ -112,6 +122,27 @@ dashboardController.getBoxAppQrcode = async (req,res) => {
     } else {
         res.json({error: "error"});
     }
+}
+
+dashboardController.renderSupport = (req,res) => {
+    res.render("support", { titleDocument: "Suporte" });
+}
+
+dashboardController.addTicketSupport = async (req,res) => {
+    let body = await JSON.parse(Object.keys(req.body)[0]);
+    let response = await requestHandlers.addTicketSupport(req,body.id);
+    res.json({ response });
+}
+
+dashboardController.deleteTicketSupport = async (req,res) => {
+    let body = await JSON.parse(Object.keys(req.body)[0]);
+    let response = await requestHandlers.deleteTicketSupport(req,body.id);
+    res.json({ response });
+}
+
+dashboardController.getSupportTickets = async (req,res) => {
+    let response = await requestHandlers.getSupportTickets(req.user.id);
+    res.json({ response });
 }
 
 dashboardController.renderBoxStatistics = async (req,res) => {

@@ -119,6 +119,9 @@ body {
   text-align: left;
   background-color: #fff;
 }
+.new-message{
+  color: #766df4 !important;
+}
 .swal-button{
   background: #766df4 !important;
 }

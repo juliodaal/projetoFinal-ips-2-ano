@@ -26,6 +26,32 @@ module.exports.getTypeBox = getTypeBox;
  * Function that creates a new task
  * @param {*} body 
  * */ 
+let manageBox = (req) => {
+    let {value,id} = req
+    let query = "update box set quantidade_atual = ? where id = ?";
+    return packingRequest([value,id],query,"Box do not found", "Box found");
+}
+
+module.exports.manageBox = manageBox;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
+let manageTimeBox = (req) => {
+    let {value,id} = req
+    let query = "update box set quantidade_atual = ?, aviso = 1 where id = ?";
+    return packingRequest([value,id],query,"Box do not found", "Box found");
+}
+
+module.exports.manageTimeBox = manageTimeBox;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
 let getDataDashboard = (req) => {
     let args = [req.user.tipo_from_tipo_utilizador, req.user.id];
     let query = "select b.id,tb.tipo,b.quantidade_atual,b.aviso,b.total_reciclado from utilizador u join box b on u.id=b.id_utilizador_form_utilizador join tipo_box tb on b.tipo_from_tipo_box=tb.id where u.tipo_from_tipo_utilizador = ? and u.id = ? order by id;";
@@ -72,6 +98,48 @@ let getBoxAppQrcode = (id) => {
 }
 
 module.exports.getBoxAppQrcode = getBoxAppQrcode;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
+let addTicketSupport = (req,id) => {
+    let args = [req.user.id, id];
+    console.log(args);
+    let query = "insert into supportTickets (id_utilizador_from_utilizador,id_worker_from_cometchat) values (?,?);";
+    return packingRequest(args,query,"Erro Creating the ticket", "Ticket Created");
+}
+
+module.exports.addTicketSupport = addTicketSupport;
+
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
+let deleteTicketSupport = (req,id) => {
+    let args = [req.user.id, id];
+    console.log(args);
+    let query = "delete from supportTickets where id_utilizador_from_utilizador = ? and id_worker_from_cometchat = ?;";
+    return packingRequest(args,query,"Erro Creating the ticket", "Ticket Created");
+}
+
+module.exports.deleteTicketSupport = deleteTicketSupport;
+
+/**
+ * 
+ * Function that creates a new task
+ * @param {*} body 
+ * */ 
+let getSupportTickets = id => {
+    let args = [id];
+    let query = "select id_utilizador_from_utilizador,id_worker_from_cometchat from supportTickets where id_utilizador_from_utilizador = ?;";
+    return packingRequest(args,query,"Erro Getting the ticket", "Successful");
+}
+
+module.exports.getSupportTickets = getSupportTickets;
 
 /**
  * 

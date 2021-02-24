@@ -1,9 +1,9 @@
-function ModalsEvent(button, modal, close, changeModal = false) {
+function ModalsEvent(button, modal, close, changeModal = false, chat = false) {
         this.button = button;
         this.modal = modal;
         this.close = close;
         this.changeModal = changeModal;
-        if(button){
+        if(button && chat == false){
             this.initEvents();
         }
 };
@@ -13,7 +13,7 @@ ModalsEvent.prototype.initEvents = function() {
     ? this.button.onclick = () => { this.show(this.modal); this.hidden(this.changeModal); }
     : this.button.onclick = () => { this.show(this.modal); } ;
     this.close.onclick = () => { this.hidden(this.modal); }
-    this.modal.onmouseup = (e) => { this.hiddenOverlay(e, this.modal); }
+    this.modal.onmousedown = (e) => { this.hiddenOverlay(e, this.modal); }
     this.showPassword();
 }
 

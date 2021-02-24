@@ -97,4 +97,15 @@ router.post("/app/box/register/:id/:quantity/:weight/:date/:idUser", dashboardCo
 // Get Status Box App Worker
 router.post("/app/box/status/:company", dashboardController.getStatusBox);
 
+// Support
+router.get("/support", isAuthenticated, dashboardController.renderSupport);
+
+router.post("/support", isAuthenticated, dashboardController.addTicketSupport);
+
+router.post("/support/delete", isAuthenticated, dashboardController.deleteTicketSupport);
+
+router.get("/support/get", isAuthenticated, dashboardController.getSupportTickets);
+
+router.get("/box/data/:value/:id", isAuthenticated, dashboardController.manageBox);
+
 module.exports = router;
