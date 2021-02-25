@@ -30,7 +30,11 @@ function App(id) {
 /**
  * handlers
  */
+this.link = "https://projeto-final-ips-2-ano.herokuapp.com/"
+// let link = "http://localhost:8080/"
 App.prototype.loader = function() {
+    this.link = "https://projeto-final-ips-2-ano.herokuapp.com/"
+    // this.link = "http://localhost:8080/"
     var preloader = document.querySelector('.cs-page-loading');
     preloader.classList.remove('active');
     setTimeout(() => { preloader.remove(); }, 2000);
@@ -52,13 +56,13 @@ App.prototype.activateEvents = function() {
     if(myChart != null){
         switch (myChart.dataset.purpose) {
             case "client":
-                getDataChart(renderChart,`https://projeto-final-ips-2-ano.herokuapp.com/statistics/client/${myChart.dataset.id}`, "Numero de Contentores");
+                getDataChart(renderChart,`${this.link}statistics/client/${myChart.dataset.id}`, "Numero de Contentores");
                 break;
             case "worker":
-                getDataChart(renderChart,`https://projeto-final-ips-2-ano.herokuapp.com/worker/statistics/${myChart.dataset.id}`, "Numero de Contentores Trabalhados");
+                getDataChart(renderChart,`${this.link}worker/statistics/${myChart.dataset.id}`, "Numero de Contentores Trabalhados");
                 break;
             case "box":
-                getDataChart(renderChartBox,`https://projeto-final-ips-2-ano.herokuapp.com/box/statistics/${myChart.dataset.id}`, "Numero de Elementos");
+                getDataChart(renderChartBox,`${this.link}box/statistics/${myChart.dataset.id}`, "Numero de Elementos");
                 break;
             default:
                 break;
@@ -75,18 +79,18 @@ App.prototype.registerBoxEmptied = function() {
         peso: form.get("peso"), 
         date: form.get("date")
     };
-    sendHttpRequest('https://projeto-final-ips-2-ano.herokuapp.com/worker/box','POST',showFeedbackWorker,data);
+    sendHttpRequest(`${this.link}worker/box`,'POST',showFeedbackWorker,data);
 }
 
 App.prototype.getConversation = function(event) {
     let id = event.currentTarget.dataset.converid;
-    sendHttpRequest('https://projeto-final-ips-2-ano.herokuapp.com/support','POST',reloadSupport,{id});
+    sendHttpRequest(`${this.link}support`,'POST',reloadSupport,{id});
 }
 
 App.prototype.ticketDone = function(event) {
     let id = event.currentTarget.dataset.converid;
     console.log(id);
-    sendHttpRequest('https://projeto-final-ips-2-ano.herokuapp.com/support/delete','post',deleteSupport,{id});
+    sendHttpRequest(`${this.link}support/delete`,'post',deleteSupport,{id});
 }
 
 App.prototype.openSupportChat = function(event) {
@@ -172,7 +176,7 @@ let activeSupportAction = () =>{
                                                 .build();
                         conversationRequest.fetchNext().then(
                         conversationList => {sendHttpRequest(
-                                            'https://projeto-final-ips-2-ano.herokuapp.com/support/get',
+                                            `${link}support/get`,
                                             'GET',
                                             dispatchSupport,
                                             null,
@@ -406,7 +410,7 @@ let dispatchSupport = (response,parameters) => {
     }
 }
 
-let findTypes = (callback, userId) => sendHttpRequest(`https://projeto-final-ips-2-ano.herokuapp.com/box/select/${userId}`,'GET',callback);
+let findTypes = (callback, userId) => sendHttpRequest(`${link}box/select/${userId}`,'GET',callback);
 
 let getDataChart = (callback,url,lineDescription) => sendHttpRequest(url,'POST',callback,null,lineDescription);
 

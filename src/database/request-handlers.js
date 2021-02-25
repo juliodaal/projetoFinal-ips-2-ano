@@ -47,8 +47,8 @@ module.exports.manageBox = manageBox;
  * @param {*} body 
  * */ 
 let manageTimeBox = (req) => {
-    let {value,id} = req
-    let query = "update box set quantidade_atual = ?, aviso = 1 where id = ?";
+    let {id} = req
+    let query = "update box set aviso = 1 where id = ?";
     return packingRequest([value,id],query,"Box do not found", "Box found");
 }
 

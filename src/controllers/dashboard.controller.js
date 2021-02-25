@@ -6,6 +6,9 @@ dashboardController.renderDaskboard = async (req,res) => {
     switch (req.user.tipo_from_tipo_utilizador) {
         case 1:
             response = await requestHandlers.getDataDashboard(req);
+            response.data.forEach(element => {
+                element.aviso == 1  ? element.aviso = "Yes" : element.aviso = "No";
+            });
             res.render("dashboard", { titleDocument: "Dashboard" , box: response.data, currentUser: req.user });
             break;
         case 2:
@@ -101,6 +104,9 @@ dashboardController.manageBox = async (req,res) => {
 
 dashboardController.renderDaskboardById = async (req,res) => {
     let response = await requestHandlers.getDataDashboardById(req.params.id);
+    response.data.forEach(element => {
+        element.aviso == 1  ? element.aviso = "Yes" : element.aviso = "No";
+    });
     res.render("dashboard", { titleDocument: "Dashboard" , box: response.data, addBox: true, user: req.params, currentUser: req.user});
 }
 
@@ -203,27 +209,18 @@ dashboardController.renderEditWorker = async (req,res) => {
 }
 
 dashboardController.editClient = async (req,res) => {
-    let response = await requestHandlers.editClient(req.body,req.params.id);
+    await requestHandlers.editClient(req.body,req.params.id);
     res.redirect("/dashboard");
-    // response.message == "success"
-    // ? res.render("adminDashboard", { titleDocument: "Dashboard", success: true, message:"Cliente Editado com Sucesso."}) 
-    // : res.render("adminDashboard", { titleDocument: "Dashboard", error: true, message:"Erro ao Editar ao Cliente." })
-}
+ }
 
 dashboardController.renderDeleteClient = async (req,res) => {
-    let response = await requestHandlers.deleteClient(req.params.id);
+    await requestHandlers.deleteClient(req.params.id);
     res.redirect("/dashboard");
-    // response.message == "success"
-    // ? res.render("adminDashboard", { titleDocument: "Dashboard", success: true, message:"Cliente Apagado com Sucesso."}) 
-    // : res.render("adminDashboard", { titleDocument: "Dashboard", error: true, message:"Erro ao Apagar ao Cliente." })
 }
 
 dashboardController.deleteWorker = async (req,res) => {
-    let response = await requestHandlers.deleteWorker(req.params.id);
+    await requestHandlers.deleteWorker(req.params.id);
     res.redirect("/dashboard");
-    // response.message == "success"
-    // ? res.render("adminDashboard", { titleDocument: "Dashboard", success: true, message:"Cliente Apagado com Sucesso."}) 
-    // : res.render("adminDashboard", { titleDocument: "Dashboard", error: true, message:"Erro ao Apagar ao Cliente." })
 }
 
 
