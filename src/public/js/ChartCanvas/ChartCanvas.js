@@ -30,7 +30,7 @@ this.config = {
         responsive: true,
         title: {
             display: true,
-            text: 'Task Done'
+            text: 'Data'
         },
         tooltips: {
             mode: 'index',

@@ -3,8 +3,8 @@ import { ModalsSupport } from "./modalsSupport/ModalsSupport.js";
 import { ChartCanvas } from "./ChartCanvas/ChartCanvas.js";
 import { MenuEvent } from "./MenuEvent/MenuEvent.js";
 
-let link = "https://projeto-final-ips-2-ano.herokuapp.com/"
-// let link = "http://localhost:8080/"
+// let link = "https://projeto-final-ips-2-ano.herokuapp.com/"
+let link = "http://localhost:8080/"
 
 "use strict";
 /**
@@ -34,8 +34,8 @@ function App(id) {
  * handlers
  */
 App.prototype.loader = function() {
-    this.link = "https://projeto-final-ips-2-ano.herokuapp.com/"
-    // this.link = "http://localhost:8080/"
+    // this.link = "https://projeto-final-ips-2-ano.herokuapp.com/"
+    this.link = "http://localhost:8080/"
     var preloader = document.querySelector('.cs-page-loading');
     preloader.classList.remove('active');
     setTimeout(() => { preloader.remove(); }, 2000);
@@ -187,6 +187,7 @@ let activeSupportAction = () =>{
                                                 .ConversationsRequestBuilder()
                                                 .setLimit(50)
                                                 .build();
+                        console.log(conversationRequest);
                         conversationRequest.fetchNext().then(
                         conversationList => {sendHttpRequest(
                                             `${link}support/get`,
@@ -216,7 +217,7 @@ let createUserChat = function(response, userData){
             
             let apiKey = "3f6781f4d27d9bf7fe4bac0a6ac554b166f8fc24";
             var uid = `${response.data.insertId}`;
-            var name = userData.name + userData.lastName;
+            var name = `${userData.name} ${userData.lastName}`;
 
             var user = new CometChat.User(uid);
             user.setName(name);

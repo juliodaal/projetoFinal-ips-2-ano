@@ -113,7 +113,6 @@ module.exports.getBoxAppQrcode = getBoxAppQrcode;
  * */ 
 let addTicketSupport = (req,id) => {
     let args = [req.user.id, id];
-    console.log(args);
     let query = "insert into supportTickets (id_utilizador_from_utilizador,id_worker_from_cometchat) values (?,?);";
     return packingRequest(args,query,"Erro Creating the ticket", "Ticket Created");
 }
@@ -128,7 +127,6 @@ module.exports.addTicketSupport = addTicketSupport;
  * */ 
 let deleteTicketSupport = (req,id) => {
     let args = [req.user.id, id];
-    console.log(args);
     let query = "delete from supportTickets where id_utilizador_from_utilizador = ? and id_worker_from_cometchat = ?;";
     return packingRequest(args,query,"Erro Creating the ticket", "Ticket Created");
 }
@@ -306,9 +304,7 @@ module.exports.deleteWorker = deleteWorker;
  * @param {*} body 
  * */ 
 let registerBoxEmptied = async (body, id) => {
-    let { idBox, total, peso, date } = body
-    console.log(body);
-    console.log(id);
+    let { idBox, total, peso, date } = body;
     let query = "insert into box_ganhos (id_box,total_esvaziado,peso,data) values (?,?,?,STR_TO_DATE(?,'%Y-%m-%d'));";
     let response = packingRequest([idBox,total,peso,date],query,"Error registering box", "Box resgistered")
     .then(res => {
@@ -409,7 +405,7 @@ let createBox = (body,id) => {
                 let mm = String(today.getMonth() + 1).padStart(2, '0');
                 let yyyy = today.getFullYear();
                 today = yyyy + '-' + dd + '-' + mm;
-                query = "insert into historico_cliente (id_utilizador_from_utilizador,id_box_from_box,data) values (?,?,STR_TO_DATE(?,'%Y-%m-%d'));";
+                query = "insert into historico_cliente (id_utilizador_from_utilizador,id_box_from_box,data) values (?,?,STR_TO_DATE(?,'%Y-%d-%m'));";
                 packingRequest([id,res.data.insertId,today],query,"Box Type not found", "Box Type found");
             })
             return responseBack;
@@ -642,6 +638,7 @@ let sendRequest = (query, data, errorMessage,successMessage) => {
     let sql = mysql.format(query, data);
     return new Promise((resolve, reject) => {
         pool.query(sql, function (err, rows, fields) {
+
             if (err) {
                 reject(new Exception(errorMessage, 2));
             } else {
