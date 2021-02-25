@@ -3,6 +3,9 @@ import { ModalsSupport } from "./modalsSupport/ModalsSupport.js";
 import { ChartCanvas } from "./ChartCanvas/ChartCanvas.js";
 import { MenuEvent } from "./MenuEvent/MenuEvent.js";
 
+let link = "https://projeto-final-ips-2-ano.herokuapp.com/"
+// let link = "http://localhost:8080/"
+
 "use strict";
 /**
  * Função que será executada quando a página estiver toda carregada, criando a variável global "info" com um objeto Information
@@ -30,8 +33,6 @@ function App(id) {
 /**
  * handlers
  */
-this.link = "https://projeto-final-ips-2-ano.herokuapp.com/"
-// let link = "http://localhost:8080/"
 App.prototype.loader = function() {
     this.link = "https://projeto-final-ips-2-ano.herokuapp.com/"
     // this.link = "http://localhost:8080/"
