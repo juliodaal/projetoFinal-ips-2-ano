@@ -83,6 +83,19 @@ App.prototype.registerBoxEmptied = function() {
     sendHttpRequest(`${this.link}worker/box`,'POST',showFeedbackWorker,data);
 }
 
+App.prototype.createWorker = function(event) {
+        let iForm = document.getElementById("createWorker");
+        let form = new FormData(iForm);
+        let data = {
+            name: form.get("name"), 
+            lastName: form.get("lastName"), 
+            email: form.get("email"), 
+            password: form.get("password"),
+            company: form.get("company")
+        };
+        sendHttpRequest(`${this.link}worker`,'POST',createUserChat,data,{name: data.name,lastName: data.lastName});
+}
+
 App.prototype.getConversation = function(event) {
     let id = event.currentTarget.dataset.converid;
     sendHttpRequest(`${this.link}support`,'POST',reloadSupport,{id});
@@ -169,7 +182,6 @@ let activeSupportAction = () =>{
                                 }
                             }
                         }}));
-                    // Fin Recibir mensaje en tiempo real
                     // Listar mensajes
                     let conversationRequest = new CometChat
                                                 .ConversationsRequestBuilder()
@@ -183,7 +195,6 @@ let activeSupportAction = () =>{
                                             null,
                                             conversationList)},
                         error => { console.log("Conversations list fetching failed with error:", error)});
-                    // Fin Listar mensajes
                 },
                 error => {
                     swal("Login failed in the chat:","You can not send message to workers","error");    
@@ -192,6 +203,41 @@ let activeSupportAction = () =>{
         error => {
             swal("Initialization failed in the chat:","You can not send message to workers","error");
         });
+}
+
+let createUserChat = function(response, userData){
+    if(response.message == "success"){
+        var appID = "2984070d773ac37";
+        var region = "eu";
+        var appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build();
+        CometChat.init(appID, appSetting).then(
+            () => {
+            console.log("Initialization completed successfully");
+            
+            let apiKey = "3f6781f4d27d9bf7fe4bac0a6ac554b166f8fc24";
+            var uid = `${response.data.insertId}`;
+            var name = userData.name + userData.lastName;
+
+            var user = new CometChat.User(uid);
+            user.setName(name);
+            CometChat.createUser(user, apiKey).then(
+                user => {
+                    console.log("user created", user);
+                    swal("Parabéns", "Utilizador criado", "success");
+                },error => {
+                    console.log("error", error);
+                    swal("Mais ou menos :(", "Utilizador criado sem opção ao suporte", "warning").then(res => {
+                        window.location.href = `${link}/dashboard`;
+                    });
+                })},
+        error => {
+            console.log("Initialization failed with error:", error);
+            swal("Mais ou menos :(", "Utilizador criado sem opção ao suporte", "warning");
+        }
+        );
+    } else {
+        swal("Erro", "Erro ao criar ao Utilizador", "error");
+    }
 }
 
 let handleMessage = function(message) {

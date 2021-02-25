@@ -2,7 +2,7 @@
     <h1 class="m-3">Agregar Trabalhador</h1>
     <div class="row container">
         <div class="col-12 col-sm-6">
-            <form action="/worker" method="post">
+            <form action="javascript: app.createWorker(event);" method="post" id="createWorker">
                 <div class="form-group">
                     <label for="name">Nome</label>
                     <input class="form-control" type="text" name="name" id="name-input" placeholder="The Name Here.." required>

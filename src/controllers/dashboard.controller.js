@@ -87,8 +87,9 @@ dashboardController.createClient = async (req,res) => {
 }
 
 dashboardController.createWorker = async (req,res) => {
-    await requestHandlers.createWorker(req.body);
-    res.redirect("/dashboard");
+    let body = await JSON.parse(Object.keys(req.body)[0]);
+    let response = await requestHandlers.createWorker(body);
+    res.json({ response });
 }
 
 dashboardController.manageBox = async (req,res) => {

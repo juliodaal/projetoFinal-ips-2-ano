@@ -15,27 +15,27 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="/profile">
                 <i class="fe-user font-size-base opacity-60 mr-2"></i>
-                Profile
+                Perfil
               </a>
             </li>
             <li class="dropdown-divider"></li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="/logout">
                 <i class="fe-log-out font-size-base opacity-60 mr-2"></i>
-                Sign out
+                Sair
               </a>
             </li>
           </ul>
         </div>
       {{else}}
-          <button class="btn btn-success d-inline-block ml-3" id="button-signin">Sign in</button>
+          <button class="btn btn-success d-inline-block ml-3" id="button-signin">Iniciar sessão</button>
       {{/if}}
     </div>
     <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse3">
         <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse1">
             <ul class="navbar-nav mr-auto">
                 {{#if user}}
-                  <li class="nav-item"><a class="nav-link" href="/dashboard">Dasboard</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/dashboard">Painel de instrumentos</a></li>
                   <li class="nav-item"><a class="nav-link" href="/support">Suporte</a></li>
                 {{else}}
                   <li class="nav-item"><a class="nav-link" href="/about">Sobre Nós</a></li>
